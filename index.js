@@ -48,8 +48,9 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
+function processLength(list, callback) {
   /* CODE HERE */
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +67,9 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
+function processLastItem(stringList, callback) {
   /* CODE HERE */
+  return callback(stringList[stringList.length-1]);
 }
 
 /**
@@ -87,9 +89,13 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
+function processSum(numberList, callback) {
   /* CODE HERE */
-}
+ // const sum = (a, b) =>
+ // return callback(numberList.reduce(0));
+ }
+
+
 
 /**
  * ### Challenge `processProduct`
@@ -109,8 +115,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
+function processProduct(num1, num2, callback) {
   /* CODE HERE */
+  return callback(num1*num2);
 }
 
 /**
@@ -133,8 +140,20 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
+function processContains(item, list, callback) {
   /* CODE HERE */
+  //let trueorfalse = function contain(item, list){
+  //  let truth;
+   // for (let i = 0; i < list.length; i++){
+   //   if (item === list[i]) {
+    //    truth = true;
+    //  }
+
+    //  else truth = false;
+   // }
+   // return truth;
+ // }
+//return callback(trueorfalse);
 }
 
 /**
@@ -178,8 +197,11 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
+function getFullNames(runners ) {
   /* CODE HERE */
+  const fullname = [];
+  runners.forEach ( runners => {fullname.push(`${runners.last_name}, ${runners.first_name}`)})
+  return fullname;
 }
 
 /**
@@ -194,8 +216,11 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
+function firstNamesAllCaps(runners) {
   /* CODE HERE */
+  let firstName = [];
+  firstName = runners.map((runners) => runners.first_name.toUpperCase());
+  return firstName;
 }
 
 /**
@@ -211,8 +236,11 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
+function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
+  let tShirtList = runners.filter(function(currentValue){ 
+  return currentValue.shirt_size === tShirtSize;
+ })
 }
 
 /**
@@ -225,8 +253,15 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
+function tallyUpDonations(runners) {
   /* CODE HERE */
+  const totaldonation = runners.reduce(function(accumulator, currentValue){
+    console.log(`${accumulator}`);
+    console.log(`${currentValue.donation}`);
+  return accumulator + currentValue.donation; 
+  }, 0);
+
+  console.log(totaldonation);
 }
 
 /////////////// CLOSURES ///////////////
