@@ -69,7 +69,7 @@ function processLength(list, callback) {
 */
 function processLastItem(stringList, callback) {
   /* CODE HERE */
-  return callback(stringList[stringList.length-1]);
+  return callback(stringList[stringList.length - 1]);
 }
 
 /**
@@ -91,10 +91,8 @@ function processLastItem(stringList, callback) {
 */
 function processSum(numberList, callback) {
   /* CODE HERE */
- // const sum = (a, b) =>
- // return callback(numberList.reduce(0));
- }
-
+  return callback(numberList.reduce((a, b) => a + b, 0));
+}
 
 
 /**
@@ -117,7 +115,7 @@ function processSum(numberList, callback) {
 */
 function processProduct(num1, num2, callback) {
   /* CODE HERE */
-  return callback(num1*num2);
+  return callback(num1 * num2);
 }
 
 /**
@@ -142,19 +140,9 @@ function processProduct(num1, num2, callback) {
 */
 function processContains(item, list, callback) {
   /* CODE HERE */
-  //let trueorfalse = function contain(item, list){
-  //  let truth;
-   // for (let i = 0; i < list.length; i++){
-   //   if (item === list[i]) {
-    //    truth = true;
-    //  }
-
-    //  else truth = false;
-   // }
-   // return truth;
- // }
-//return callback(trueorfalse);
+  return callback(list.includes(item));
 }
+
 
 /**
  * ### Challenge `processDuplicateFree`
@@ -197,10 +185,10 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(runners ) {
+function getFullNames(runners) {
   /* CODE HERE */
   const fullname = [];
-  runners.forEach ( runners => {fullname.push(`${runners.last_name}, ${runners.first_name}`)})
+  runners.forEach(runners => { fullname.push(`${runners.last_name}, ${runners.first_name}`) })
   return fullname;
 }
 
@@ -238,9 +226,10 @@ function firstNamesAllCaps(runners) {
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
   /* CODE HERE */
-  let tShirtList = runners.filter(function(currentValue){ 
-  return currentValue.shirt_size === tShirtSize;
- })
+  let tShirtList = runners.filter(function (currentValue) {
+    return currentValue.shirt_size === tShirtSize;
+  })
+  return tShirtList;
 }
 
 /**
@@ -255,13 +244,10 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
 */
 function tallyUpDonations(runners) {
   /* CODE HERE */
-  const totaldonation = runners.reduce(function(accumulator, currentValue){
-    console.log(`${accumulator}`);
-    console.log(`${currentValue.donation}`);
-  return accumulator + currentValue.donation; 
+  let totaldonation = runners.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue.donation;
   }, 0);
-
-  console.log(totaldonation);
+  return totaldonation;
 }
 
 /////////////// CLOSURES ///////////////
@@ -282,9 +268,9 @@ function tallyUpDonations(runners) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  let count = 0;
+  return function () {
+    return count++
   }
   // BROKEN CODE ENDS
 }
@@ -309,8 +295,16 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
+function counterMakerWithLimit(max) {
   /* CODE HERE */
+  let count = -1;
+  return function () {
+
+    if (count === 3) {
+      count = -1;
+    }
+    return ++count;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
